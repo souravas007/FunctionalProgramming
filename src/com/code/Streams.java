@@ -6,7 +6,8 @@ public class Streams {
 
 	public static void main( String[] args ) {
 		Streams stream = new Streams();
-		stream.addListOfNumbers();
+		//		stream.addListOfNumbers();
+		stream.addListOfNumbersCases();
 	}
 
 	List<Integer> numbers = List.of( 12, 9, 13, 4, 15 );
@@ -17,5 +18,18 @@ public class Streams {
 		int sum2 = numbers.stream().reduce( 0, Integer::sum );
 		System.out.println( sum1 );
 		System.out.println( sum2 );
+	}
+
+	private void addListOfNumbersCases() {
+		int firstNumber = numbers.stream().reduce( 0, ( x, y ) -> x );
+		int lastNumber = numbers.stream().reduce( 0, ( x, y ) -> y );
+		int maxPositiveNumber =
+				numbers.stream().reduce( 0, ( x, y ) -> x > y ? x : y );
+		int maxNumber =
+				numbers.stream().reduce( Integer.MIN_VALUE, ( x, y ) -> x > y ? x : y );
+		System.out.println( firstNumber );
+		System.out.println( lastNumber );
+		System.out.println( maxPositiveNumber );
+		System.out.println( maxNumber );
 	}
 }
