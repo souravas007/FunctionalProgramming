@@ -2,19 +2,19 @@ package com.code;
 
 import java.util.List;
 
-public class Main {
+public class Basics {
 
 	public static void main( String[] args ) {
-		Main main = new Main();
-		//		main.printNumbersInListTraditional();
-		//		main.printNumberInListFunctionalProgramming();
-		//		main.printEvenNumbers();
-		//		main.printOddNumbers();
-		//		main.wordsContainingSequence();
-		//		main.wordsContainingFiveLettersOrMore();
-		//		main.squareOfEvenNumbers();
-		//		main.cubeAllOddNumbers();
-		main.printNumberOfCharacters();
+		Basics basics = new Basics();
+		//		basics.printNumbersInListTraditional();
+		//		basics.printNumberInListFunctionalProgramming();
+		//		basics.printEvenNumbers();
+		//		basics.printOddNumbers();
+		//		basics.wordsContainingSequence();
+		//		basics.wordsContainingFiveLettersOrMore();
+		//		basics.squareOfEvenNumbers();
+		//		basics.cubeAllOddNumbers();
+		//		basics.printNumberOfCharacters();
 	}
 
 	List<Integer> numbers = List.of( 12, 9, 13, 4, 15 );
