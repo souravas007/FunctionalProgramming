@@ -1,2 +1,3 @@
 # FunctionalProgramming
-Functional Programming in Java
+1. Basics
+2. Streams
