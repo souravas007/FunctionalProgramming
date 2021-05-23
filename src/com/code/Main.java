@@ -8,11 +8,13 @@ public class Main {
 		Main main = new Main();
 		//		main.printNumbersInListTraditional();
 		//		main.printNumberInListFunctionalProgramming();
-		main.printEvenNumbers();
-		main.printOddNumbers();
+		//		main.printEvenNumbers();
+		//		main.printOddNumbers();
+		main.wordsContainingSequence();
 	}
 
 	List<Integer> numbers = List.of( 12, 9, 13, 4, 15 );
+	List<String> courses = List.of( "Spring Boot", "Java", "Python", "Spring" );
 
 	private void printNumbersInListTraditional() {
 		for ( Integer number : numbers ) {
@@ -34,4 +36,8 @@ public class Main {
 		numbers.stream().filter( x -> x % 2 != 0 ).forEach( System.out::println );
 	}
 
+	private void wordsContainingSequence() {
+		courses.stream().filter( course -> course.contains( "Spring" ) )
+				.forEach( System.out::println );
+	}
 }
