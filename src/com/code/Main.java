@@ -11,8 +11,9 @@ public class Main {
 		//		main.printEvenNumbers();
 		//		main.printOddNumbers();
 		//		main.wordsContainingSequence();
-//		main.wordsContainingFiveLettersOrMore();
-		main.squareOfEvenNumbers();
+		//		main.wordsContainingFiveLettersOrMore();
+		//		main.squareOfEvenNumbers();
+		main.cubeAllOddNumbers();
 	}
 
 	List<Integer> numbers = List.of( 12, 9, 13, 4, 15 );
@@ -51,6 +52,11 @@ public class Main {
 	private void squareOfEvenNumbers() {
 		numbers.stream().filter( number -> number % 2 == 0 ).map( number -> number * number )
 				.forEach( System.out::println );
+	}
+
+	private void cubeAllOddNumbers() {
+		numbers.stream().filter( number -> number % 2 != 0 )
+				.map( number -> number * number * number ).forEach( System.out::println );
 	}
 
 }
