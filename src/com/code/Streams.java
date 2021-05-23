@@ -7,7 +7,8 @@ public class Streams {
 	public static void main( String[] args ) {
 		Streams stream = new Streams();
 		//		stream.addListOfNumbers();
-		stream.addListOfNumbersCases();
+//		stream.addListOfNumbersCases();
+		stream.squareAndSum();
 	}
 
 	List<Integer> numbers = List.of( 12, 9, 13, 4, 15 );
@@ -32,4 +33,12 @@ public class Streams {
 		System.out.println( maxPositiveNumber );
 		System.out.println( maxNumber );
 	}
+
+	@SuppressWarnings( "Convert2MethodRef" ) private void squareAndSum() {
+		int result = numbers.stream().map( number -> number * number )
+				.reduce( 0, ( x, y ) -> x + y );
+		System.out.println( result );
+	}
+
+
 }
