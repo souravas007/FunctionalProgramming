@@ -9,7 +9,8 @@ import java.util.List;
 		//		stream.addListOfNumbers();
 		//		stream.addListOfNumbersCases();
 		//		stream.squareAndSum();
-		stream.sumOfOddNumbers();
+		//		stream.sumOfOddNumbers();
+		stream.printDistinctNumbers();
 	}
 
 	List<Integer> numbers = List.of( 12, 9, 13, 4, 15 );
@@ -45,6 +46,10 @@ import java.util.List;
 		int result = numbers.stream().filter( number -> number % 2 != 0 )
 				.reduce( 0, ( x, y ) -> x + y );
 		System.out.println( result );
+	}
+
+	private void printDistinctNumbers() {
+		numbers.stream().distinct().forEach( System.out::println );
 	}
 
 }
