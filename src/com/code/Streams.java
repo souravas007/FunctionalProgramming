@@ -2,19 +2,20 @@ package com.code;
 
 import java.util.List;
 
-public class Streams {
+@SuppressWarnings( "Convert2MethodRef" ) public class Streams {
 
 	public static void main( String[] args ) {
 		Streams stream = new Streams();
 		//		stream.addListOfNumbers();
-//		stream.addListOfNumbersCases();
-		stream.squareAndSum();
+		//		stream.addListOfNumbersCases();
+		//		stream.squareAndSum();
+		stream.sumOfOddNumbers();
 	}
 
 	List<Integer> numbers = List.of( 12, 9, 13, 4, 15 );
 	List<String> courses = List.of( "Spring Boot", "Java", "Python", "Spring" );
 
-	@SuppressWarnings( "Convert2MethodRef" ) private void addListOfNumbers() {
+	private void addListOfNumbers() {
 		int sum1 = numbers.stream().reduce( 0, ( a, b ) -> a + b );
 		int sum2 = numbers.stream().reduce( 0, Integer::sum );
 		System.out.println( sum1 );
@@ -34,11 +35,16 @@ public class Streams {
 		System.out.println( maxNumber );
 	}
 
-	@SuppressWarnings( "Convert2MethodRef" ) private void squareAndSum() {
+	private void squareAndSum() {
 		int result = numbers.stream().map( number -> number * number )
 				.reduce( 0, ( x, y ) -> x + y );
 		System.out.println( result );
 	}
 
+	private void sumOfOddNumbers() {
+		int result = numbers.stream().filter( number -> number % 2 != 0 )
+				.reduce( 0, ( x, y ) -> x + y );
+		System.out.println( result );
+	}
 
 }
