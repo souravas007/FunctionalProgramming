@@ -20,6 +20,7 @@ public class Main {
 		}
 	}
 
+	@SuppressWarnings( { "SimplifyStreamApiCallChains", "Convert2MethodRef" } )
 	private void printNumberInListFunctionalProgramming() {
 		numbers.stream().forEach( System.out::println );
 		numbers.stream().forEach( number -> System.out.println( number ) );
