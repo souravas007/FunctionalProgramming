@@ -13,7 +13,8 @@ public class Main {
 		//		main.wordsContainingSequence();
 		//		main.wordsContainingFiveLettersOrMore();
 		//		main.squareOfEvenNumbers();
-		main.cubeAllOddNumbers();
+		//		main.cubeAllOddNumbers();
+		main.printNumberOfCharacters();
 	}
 
 	List<Integer> numbers = List.of( 12, 9, 13, 4, 15 );
@@ -57,6 +58,11 @@ public class Main {
 	private void cubeAllOddNumbers() {
 		numbers.stream().filter( number -> number % 2 != 0 )
 				.map( number -> number * number * number ).forEach( System.out::println );
+	}
+
+	private void printNumberOfCharacters() {
+		courses.stream().map( course -> course + " : " + course.length() )
+				.forEach( System.out::println );
 	}
 
 }
