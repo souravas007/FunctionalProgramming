@@ -10,7 +10,8 @@ import java.util.List;
 		//		stream.addListOfNumbersCases();
 		//		stream.squareAndSum();
 		//		stream.sumOfOddNumbers();
-		stream.printDistinctNumbers();
+		//		stream.printDistinctNumbers();
+		stream.sortNumbers();
 	}
 
 	List<Integer> numbers = List.of( 12, 9, 13, 4, 15 );
@@ -50,6 +51,10 @@ import java.util.List;
 
 	private void printDistinctNumbers() {
 		numbers.stream().distinct().forEach( System.out::println );
+	}
+
+	private void sortNumbers() {
+		numbers.stream().sorted().forEach( System.out::println );
 	}
 
 }
