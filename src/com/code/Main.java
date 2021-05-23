@@ -10,8 +10,9 @@ public class Main {
 		//		main.printNumberInListFunctionalProgramming();
 		//		main.printEvenNumbers();
 		//		main.printOddNumbers();
-//		main.wordsContainingSequence();
-		main.wordsContainingFiveLettersOrMore();
+		//		main.wordsContainingSequence();
+//		main.wordsContainingFiveLettersOrMore();
+		main.squareOfEvenNumbers();
 	}
 
 	List<Integer> numbers = List.of( 12, 9, 13, 4, 15 );
@@ -47,5 +48,9 @@ public class Main {
 				.forEach( System.out::println );
 	}
 
+	private void squareOfEvenNumbers() {
+		numbers.stream().filter( number -> number % 2 == 0 ).map( number -> number * number )
+				.forEach( System.out::println );
+	}
 
 }
