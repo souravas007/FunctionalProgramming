@@ -10,7 +10,8 @@ public class Main {
 		//		main.printNumberInListFunctionalProgramming();
 		//		main.printEvenNumbers();
 		//		main.printOddNumbers();
-		main.wordsContainingSequence();
+//		main.wordsContainingSequence();
+		main.wordsContainingFiveLettersOrMore();
 	}
 
 	List<Integer> numbers = List.of( 12, 9, 13, 4, 15 );
@@ -40,4 +41,11 @@ public class Main {
 		courses.stream().filter( course -> course.contains( "Spring" ) )
 				.forEach( System.out::println );
 	}
+
+	private void wordsContainingFiveLettersOrMore() {
+		courses.stream().filter( course -> course.length() >= 5 )
+				.forEach( System.out::println );
+	}
+
+
 }
