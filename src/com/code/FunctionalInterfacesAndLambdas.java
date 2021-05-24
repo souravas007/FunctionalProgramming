@@ -46,4 +46,15 @@ import java.util.function.Predicate;
 		Function<Integer, Integer> square = x -> x * x;
 		Consumer<Integer> sysOut = System.out::println;
 	}
+
+	private void Predicate() {
+		// this is created automatically when you use predicate.
+		// this is to support older versions of java.
+		Predicate<Integer> isEvent = new Predicate<Integer>() {
+
+			@Override public boolean test( Integer x ) {
+				return x % 2 == 0;
+			}
+		};
+	}
 }
