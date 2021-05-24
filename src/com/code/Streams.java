@@ -21,8 +21,8 @@ public class Streams {
 		//		stream.sortStrings();
 		//		stream.sortObjects();
 		//		stream.squareNumbersList();
-//		stream.evenNumberFiltered();
-		stream.listWithLengthOfCourseTitles();
+		//		stream.evenNumberFiltered();
+		//		stream.listWithLengthOfCourseTitles();
 	}
 
 	List<Integer> numbers = List.of( 12, 9, 13, 4, 15 );
@@ -110,15 +110,19 @@ public class Streams {
 	}
 
 	private void sortObjects() {
+		// first way. not much flexibility.
 		List<Employee> result =
 				employees.stream().sorted( Comparator.comparing( Employee::getFirstName )
 						.thenComparing( Employee::getLastName ).reversed() )
 						.collect( Collectors.toList() );
 		result.stream().forEach( System.out::println );
+
+		// second way which I copied from stack over flow. better flexibility.
 		Collections.sort( employees, ( s1, s2 ) -> {
 			int firstName = s1.getFirstName().compareTo( s2.getFirstName() );
 			if ( firstName != 0 )
 				return firstName;
+			// since this is multi line lambda, return statement is important.
 			return s2.getLastName().compareTo( s1.getLastName() );
 		} );
 		employees.stream().forEach( System.out::println );
@@ -137,5 +141,11 @@ public class Streams {
 	private void listWithLengthOfCourseTitles() {
 		courses.stream().map( course -> course.length() ).collect( Collectors.toList() )
 				.stream().forEach( System.out::println );
+	}
+
+	private void intermediateOperations() {
+		// operations that works on stream.
+		// returns stream.
+		// example: sorted(), distinct(), map(), filter().
 	}
 }
