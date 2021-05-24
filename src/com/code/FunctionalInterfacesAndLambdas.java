@@ -217,4 +217,9 @@ public class FunctionalInterfacesAndLambdas {
 		// use primitive operators when you're working with primitives.
 		System.out.println( intBinaryOperator.applyAsInt( 1, 3 ) );
 	}
+
+	private void type() {
+		Predicate<Integer> isEven = ( Integer x ) -> x % 2 == 0;
+		// type can be added. it's not necessary since it can be inferred.
+	}
 }
