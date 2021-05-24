@@ -3,11 +3,12 @@ package com.code;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FunctionalInterfacesAndLambdas {
+@SuppressWarnings( "Convert2MethodRef" ) public class FunctionalInterfacesAndLambdas {
 
 	public static void main( String[] args ) {
 		FunctionalInterfacesAndLambdas functionalInterfacesAndLambdas =
 				new FunctionalInterfacesAndLambdas();
+		functionalInterfacesAndLambdas.functionalInterfaces();
 
 	}
 
@@ -23,4 +24,16 @@ public class FunctionalInterfacesAndLambdas {
 
 	}
 
+	private void functionalInterfaces() {
+		numbers.stream().filter( x -> x % 2 == 0 ).map( x -> x * x )
+				.forEach( System.out::println );
+		numbers.stream().filter( x -> isEven( x ) ).map( x -> x * x )
+				.forEach( x -> System.out.println( x ) );
+		numbers.stream().filter( this::isEven ).map( x -> x * x )
+				.forEach( System.out::println );
+	}
+
+	private boolean isEven( int x ) {
+		return x % 2 == 0;
+	}
 }
