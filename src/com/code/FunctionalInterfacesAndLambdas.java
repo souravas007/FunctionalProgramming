@@ -2,13 +2,16 @@ package com.code;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 @SuppressWarnings( "Convert2MethodRef" ) public class FunctionalInterfacesAndLambdas {
 
 	public static void main( String[] args ) {
 		FunctionalInterfacesAndLambdas functionalInterfacesAndLambdas =
 				new FunctionalInterfacesAndLambdas();
-		functionalInterfacesAndLambdas.functionalInterfaces();
+		functionalInterfacesAndLambdas.functionalInterfacesBasics();
 
 	}
 
@@ -24,7 +27,7 @@ import java.util.List;
 
 	}
 
-	private void functionalInterfaces() {
+	private void functionalInterfacesBasics() {
 		numbers.stream().filter( x -> x % 2 == 0 ).map( x -> x * x )
 				.forEach( System.out::println );
 		numbers.stream().filter( x -> isEven( x ) ).map( x -> x * x )
@@ -35,5 +38,12 @@ import java.util.List;
 
 	private boolean isEven( int x ) {
 		return x % 2 == 0;
+	}
+
+	private void functionalInterfaces() {
+		// has one abstract method.
+		Predicate<Integer> isEvent = x -> x % 2 == 0;
+		Function<Integer, Integer> square = x -> x * x;
+		Consumer<Integer> sysOut = System.out::println;
 	}
 }
