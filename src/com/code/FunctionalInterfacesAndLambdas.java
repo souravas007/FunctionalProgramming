@@ -57,4 +57,15 @@ import java.util.function.Predicate;
 			}
 		};
 	}
+
+	private void Function() {
+		// represent a function that accepts one argument & produce a result.
+		// Inside angle bracket,the first type is of input & the next type is of result.
+		Function<Integer, Integer> square = new Function<Integer, Integer>() {
+
+			@Override public Integer apply( Integer x ) {
+				return x * x;
+			}
+		};
+	}
 }
