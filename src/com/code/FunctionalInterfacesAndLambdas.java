@@ -8,6 +8,7 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
+import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
 
 @SuppressWarnings( { "Convert2MethodRef", "SimplifyStreamApiCallChains" } )
@@ -19,7 +20,8 @@ public class FunctionalInterfacesAndLambdas {
 		//		functionalInterfacesAndLambdas.functionalInterfacesBasics();
 		//		functionalInterfacesAndLambdas.behaviourParametrizationBasics();
 		//		functionalInterfacesAndLambdas.behaviourParametrization();
-		functionalInterfacesAndLambdas.supplier();
+		//		functionalInterfacesAndLambdas.supplier();
+		functionalInterfacesAndLambdas.unaryOperator();
 
 	}
 
@@ -141,9 +143,9 @@ public class FunctionalInterfacesAndLambdas {
 	// operator -> input & output of same type.
 	// binary operator -> 2 input & output.
 	// supplier -> no input & returns something back.
-
+	// unary operator -> 1 input and 1 output of same type.
 	private void supplier() {
-		// no parameter in input. returns 2.
+		// no parameter in input. returns something back.
 		Supplier<Integer> integerSupplier = () -> 2;
 
 		Supplier<Integer> randomIntegerSupplier = () -> {
@@ -155,5 +157,11 @@ public class FunctionalInterfacesAndLambdas {
 		for ( int i = 0; i < 10; i++ )
 			System.out.println( randomIntegerSupplier.get() );
 
+	}
+
+	private void unaryOperator() {
+		// 1 input and 1 output of same type.
+		UnaryOperator<Integer> unary = x -> x * x;
+		System.out.println( unary.apply( 3 ) );
 	}
 }
