@@ -3,6 +3,7 @@ package com.code;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.function.BiPredicate;
 import java.util.function.BinaryOperator;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -11,7 +12,7 @@ import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
 
-@SuppressWarnings( { "Convert2MethodRef", "SimplifyStreamApiCallChains" } )
+@SuppressWarnings( { "Convert2MethodRef", "SimplifyStreamApiCallChains", "CodeBlock2Expr" } )
 public class FunctionalInterfacesAndLambdas {
 
 	public static void main( String[] args ) {
@@ -21,7 +22,8 @@ public class FunctionalInterfacesAndLambdas {
 		//		functionalInterfacesAndLambdas.behaviourParametrizationBasics();
 		//		functionalInterfacesAndLambdas.behaviourParametrization();
 		//		functionalInterfacesAndLambdas.supplier();
-		functionalInterfacesAndLambdas.unaryOperator();
+		//		functionalInterfacesAndLambdas.unaryOperator();
+		functionalInterfacesAndLambdas.biPredicate();
 
 	}
 
@@ -58,6 +60,16 @@ public class FunctionalInterfacesAndLambdas {
 		Consumer<Integer> sysOut = System.out::println;
 	}
 
+	/*
+	predicate -> boolean result.
+	function -> input & output.
+	consumer -> no output.
+	operator -> input & output of same type.
+	binary operator -> 2 input & output.
+	supplier -> no input & returns something back.
+	unary operator -> 1 input and 1 output of same type.
+	bi-predicate -> 2 input & 1 boolean output.
+	*/
 	@SuppressWarnings( "all" )
 	private void predicate() {
 		// this is created automatically when you use predicate.
@@ -137,13 +149,6 @@ public class FunctionalInterfacesAndLambdas {
 		return numbers.stream().map( mappingFunction ).collect( Collectors.toList() );
 	}
 
-	// predicate -> boolean result.
-	// function -> input & output.
-	// consumer -> no output.
-	// operator -> input & output of same type.
-	// binary operator -> 2 input & output.
-	// supplier -> no input & returns something back.
-	// unary operator -> 1 input and 1 output of same type.
 	private void supplier() {
 		// no parameter in input. returns something back.
 		Supplier<Integer> integerSupplier = () -> 2;
@@ -163,5 +168,18 @@ public class FunctionalInterfacesAndLambdas {
 		// 1 input and 1 output of same type.
 		UnaryOperator<Integer> unary = x -> x * x;
 		System.out.println( unary.apply( 3 ) );
+	}
+
+	private void biPredicate() {
+		// 2 input & 1 boolean output.
+		// only 1 line is there, hence, return statement not required.
+		BiPredicate<Integer, String> biPredicateTrue = ( number, string ) -> true;
+		// multiple lines. Hence, return statement is required.
+		BiPredicate<Integer, String> biPredicate = ( number, str ) -> {
+			return number < 10 && str.length() > 5;
+		};
+		System.out.println( biPredicateTrue.test( 12, "hello" ) );
+		System.out.println( biPredicate.test( 5, "Sourav" ) );
+		System.out.println( biPredicate.test( 11, "Sourav" ) );
 	}
 }
