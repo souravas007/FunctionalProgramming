@@ -2,6 +2,7 @@ package com.code;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.BinaryOperator;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -80,6 +81,19 @@ import java.util.function.Predicate;
 
 			@Override public void accept( Integer x ) {
 				System.out.println( x );
+			}
+		};
+	}
+
+	@SuppressWarnings( "all" )
+	private void binaryOperator() {
+		// reduce(0, Integer::sum).
+		// BinaryOperator takes input & output of same type.
+
+		BinaryOperator<Integer> sum = new BinaryOperator<>() {
+
+			@Override public Integer apply( Integer a, Integer b ) {
+				return a + b;
 			}
 		};
 	}
