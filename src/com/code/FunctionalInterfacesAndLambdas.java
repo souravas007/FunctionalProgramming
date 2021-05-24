@@ -2,10 +2,12 @@ package com.code;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.function.BinaryOperator;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 @SuppressWarnings( { "Convert2MethodRef", "SimplifyStreamApiCallChains" } )
@@ -16,7 +18,8 @@ public class FunctionalInterfacesAndLambdas {
 				new FunctionalInterfacesAndLambdas();
 		//		functionalInterfacesAndLambdas.functionalInterfacesBasics();
 		//		functionalInterfacesAndLambdas.behaviourParametrizationBasics();
-		functionalInterfacesAndLambdas.behaviourParametrization();
+		//		functionalInterfacesAndLambdas.behaviourParametrization();
+		functionalInterfacesAndLambdas.supplier();
 
 	}
 
@@ -93,7 +96,7 @@ public class FunctionalInterfacesAndLambdas {
 	@SuppressWarnings( "all" )
 	private void binaryOperator() {
 		// reduce(0, Integer::sum).
-		// BinaryOperator takes input & output of same type.
+		// Operator takes input & output of same type.
 
 		BinaryOperator<Integer> sum = new BinaryOperator<>() {
 
@@ -122,6 +125,7 @@ public class FunctionalInterfacesAndLambdas {
 	}
 
 	private void behaviourParametrization() {
+		// function is passed as a parameter.
 		Function<Integer, Integer> mappingFunction = x -> x * x;
 		map( numbers, mappingFunction ).stream().forEach( System.out::println );
 	}
@@ -129,5 +133,27 @@ public class FunctionalInterfacesAndLambdas {
 	private static List<Integer> map( List<Integer> numbers,
 			Function<Integer, Integer> mappingFunction ) {
 		return numbers.stream().map( mappingFunction ).collect( Collectors.toList() );
+	}
+
+	// predicate -> boolean result.
+	// function -> input & output.
+	// consumer -> no output.
+	// operator -> input & output of same type.
+	// binary operator -> 2 input & output.
+	// supplier -> no input & returns something back.
+
+	private void supplier() {
+		// no parameter in input. returns 2.
+		Supplier<Integer> integerSupplier = () -> 2;
+
+		Supplier<Integer> randomIntegerSupplier = () -> {
+			Random random = new Random();
+			return random.nextInt( 1000 );
+		};
+
+		System.out.println( integerSupplier.get() );
+		for ( int i = 0; i < 10; i++ )
+			System.out.println( randomIntegerSupplier.get() );
+
 	}
 }
