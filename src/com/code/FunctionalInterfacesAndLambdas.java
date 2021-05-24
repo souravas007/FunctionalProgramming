@@ -29,7 +29,8 @@ public class FunctionalInterfacesAndLambdas {
 		//		functionalInterfacesAndLambdas.biPredicate();
 		//		functionalInterfacesAndLambdas.biFunction();
 		//		functionalInterfacesAndLambdas.biConsumer();
-		functionalInterfacesAndLambdas.binaryOperatorForPrimitives();
+		//		functionalInterfacesAndLambdas.binaryOperatorForPrimitives();
+		functionalInterfacesAndLambdas.methodReferences();
 
 	}
 
@@ -221,5 +222,15 @@ public class FunctionalInterfacesAndLambdas {
 	private void type() {
 		Predicate<Integer> isEven = ( Integer x ) -> x % 2 == 0;
 		// type can be added. it's not necessary since it can be inferred.
+	}
+
+	@SuppressWarnings( "StringOperationCanBeSimplified" ) private void methodReferences() {
+		courses.stream().map( str -> str.toUpperCase() ).forEach( System.out::println );
+		courses.stream().map( String::toUpperCase ).forEach( System.out::println );
+		// method references work on static methods and methods on object (this::methodName).
+		Supplier<String> supplier = String::new;
+		Supplier<String> supplier1 = () -> new String();
+		System.out.println( supplier.get() );
+		System.out.println( supplier1.get() );
 	}
 }
