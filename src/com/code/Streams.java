@@ -20,8 +20,9 @@ public class Streams {
 		//		stream.sortNumbers();
 		//		stream.sortStrings();
 		//		stream.sortObjects();
-//		stream.squareNumbersList();
-		stream.evenNumberFiltered();
+		//		stream.squareNumbersList();
+//		stream.evenNumberFiltered();
+		stream.listWithLengthOfCourseTitles();
 	}
 
 	List<Integer> numbers = List.of( 12, 9, 13, 4, 15 );
@@ -130,6 +131,11 @@ public class Streams {
 
 	private void evenNumberFiltered() {
 		numbers.stream().filter( number -> number % 2 == 0 ).collect( Collectors.toList() )
+				.stream().forEach( System.out::println );
+	}
+
+	private void listWithLengthOfCourseTitles() {
+		courses.stream().map( course -> course.length() ).collect( Collectors.toList() )
 				.stream().forEach( System.out::println );
 	}
 }
