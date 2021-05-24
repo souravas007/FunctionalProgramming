@@ -19,7 +19,8 @@ public class Streams {
 		//		stream.printDistinctNumbers();
 		//		stream.sortNumbers();
 		//		stream.sortStrings();
-		stream.sortObjects();
+//		stream.sortObjects();
+		stream.squareNumbersList();
 	}
 
 	List<Integer> numbers = List.of( 12, 9, 13, 4, 15 );
@@ -119,5 +120,10 @@ public class Streams {
 			return s2.getLastName().compareTo( s1.getLastName() );
 		} );
 		employees.stream().forEach( System.out::println );
+	}
+
+	private void squareNumbersList() {
+		numbers.stream().map( number -> number * number ).collect( Collectors.toList() )
+				.stream().forEach( System.out::println );
 	}
 }
