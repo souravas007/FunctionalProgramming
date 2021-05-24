@@ -1,20 +1,25 @@
 package com.code;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
-@SuppressWarnings( "Convert2MethodRef" ) public class Streams {
+@SuppressWarnings( { "Convert2MethodRef", "SimplifyStreamApiCallChains", "Java8ListSort" } )
+public class Streams {
 
 	public static void main( String[] args ) {
 		Streams stream = new Streams();
+		stream.createEmployee();
 		//		stream.addListOfNumbers();
 		//		stream.addListOfNumbersCases();
 		//		stream.squareAndSum();
 		//		stream.sumOfOddNumbers();
 		//		stream.printDistinctNumbers();
 		//		stream.sortNumbers();
-		stream.sortStrings();
-
+		//		stream.sortStrings();
+		stream.sortObjects();
 	}
 
 	List<Integer> numbers = List.of( 12, 9, 13, 4, 15 );
@@ -46,9 +51,15 @@ import java.util.List;
 		}
 	}
 
-	List<Employee> employees =
-			List.of( new Employee( "Sourav", "A S" ), new Employee( "Sourav", "S" ),
-					new Employee( "Akash", "Nath" ), new Employee( "Akash", "Anu" ) );
+	List<Employee> employees = new ArrayList<>();
+
+	private void createEmployee() {
+		employees.add( new Employee( "Sourav", "A S" ) );
+		employees.add( new Employee( "Sourav", "S" ) );
+		employees.add( new Employee( "Akash", "Nath" ) );
+		employees.add( new Employee( "Akash", "Anu" ) );
+
+	}
 
 	private void addListOfNumbers() {
 		int sum1 = numbers.stream().reduce( 0, ( a, b ) -> a + b );
@@ -93,5 +104,20 @@ import java.util.List;
 	private void sortStrings() {
 		courses.stream().sorted( Comparator.naturalOrder() ).forEach( System.out::println );
 		courses.stream().sorted( Comparator.reverseOrder() ).forEach( System.out::println );
+	}
+
+	private void sortObjects() {
+		List<Employee> result =
+				employees.stream().sorted( Comparator.comparing( Employee::getFirstName )
+						.thenComparing( Employee::getLastName ).reversed() )
+						.collect( Collectors.toList() );
+		result.stream().forEach( System.out::println );
+		Collections.sort( employees, ( s1, s2 ) -> {
+			int firstName = s1.getFirstName().compareTo( s2.getFirstName() );
+			if ( firstName != 0 )
+				return firstName;
+			return s2.getLastName().compareTo( s1.getLastName() );
+		} );
+		employees.stream().forEach( System.out::println );
 	}
 }
