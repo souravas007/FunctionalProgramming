@@ -19,8 +19,9 @@ public class Streams {
 		//		stream.printDistinctNumbers();
 		//		stream.sortNumbers();
 		//		stream.sortStrings();
-//		stream.sortObjects();
-		stream.squareNumbersList();
+		//		stream.sortObjects();
+//		stream.squareNumbersList();
+		stream.evenNumberFiltered();
 	}
 
 	List<Integer> numbers = List.of( 12, 9, 13, 4, 15 );
@@ -124,6 +125,11 @@ public class Streams {
 
 	private void squareNumbersList() {
 		numbers.stream().map( number -> number * number ).collect( Collectors.toList() )
+				.stream().forEach( System.out::println );
+	}
+
+	private void evenNumberFiltered() {
+		numbers.stream().filter( number -> number % 2 == 0 ).collect( Collectors.toList() )
 				.stream().forEach( System.out::println );
 	}
 }
