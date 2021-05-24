@@ -9,6 +9,7 @@ import java.util.function.BiPredicate;
 import java.util.function.BinaryOperator;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.IntBinaryOperator;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
@@ -27,7 +28,8 @@ public class FunctionalInterfacesAndLambdas {
 		//		functionalInterfacesAndLambdas.unaryOperator();
 		//		functionalInterfacesAndLambdas.biPredicate();
 		//		functionalInterfacesAndLambdas.biFunction();
-		functionalInterfacesAndLambdas.biConsumer();
+		//		functionalInterfacesAndLambdas.biConsumer();
+		functionalInterfacesAndLambdas.binaryOperatorForPrimitives();
 
 	}
 
@@ -205,5 +207,14 @@ public class FunctionalInterfacesAndLambdas {
 			System.out.println( s2 );
 		};
 		biConsumer.accept( "Hello, ", "World!" );
+	}
+
+	private void binaryOperatorForPrimitives() {
+		// binary operators are used for int, long etc.
+		// it does autoboxing and unboxing which makes it inefficient.
+		// use int, long etc. to avoid autoboxing and unboxing and increase efficiency.
+		IntBinaryOperator intBinaryOperator = ( x, y ) -> x + y;
+		// use primitive operators when you're working with primitives.
+		System.out.println( intBinaryOperator.applyAsInt( 1, 3 ) );
 	}
 }
