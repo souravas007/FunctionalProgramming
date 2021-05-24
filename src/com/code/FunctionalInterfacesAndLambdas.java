@@ -6,13 +6,16 @@ import java.util.function.BinaryOperator;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-@SuppressWarnings( "Convert2MethodRef" ) public class FunctionalInterfacesAndLambdas {
+@SuppressWarnings( { "Convert2MethodRef", "SimplifyStreamApiCallChains" } )
+public class FunctionalInterfacesAndLambdas {
 
 	public static void main( String[] args ) {
 		FunctionalInterfacesAndLambdas functionalInterfacesAndLambdas =
 				new FunctionalInterfacesAndLambdas();
 		//		functionalInterfacesAndLambdas.functionalInterfacesBasics();
+		//		functionalInterfacesAndLambdas.behaviourParametrizationBasics();
 		functionalInterfacesAndLambdas.behaviourParametrization();
 
 	}
@@ -34,6 +37,7 @@ import java.util.function.Predicate;
 				.forEach( System.out::println );
 		numbers.stream().filter( x -> isEven( x ) ).map( x -> x * x )
 				.forEach( x -> System.out.println( x ) );
+		// this keyword can be used to use methods of current class.
 		numbers.stream().filter( this::isEven ).map( x -> x * x )
 				.forEach( System.out::println );
 	}
@@ -99,7 +103,7 @@ import java.util.function.Predicate;
 		};
 	}
 
-	private void behaviourParametrization() {
+	private void behaviourParametrizationBasics() {
 
 		// duplicate code exists. only filter is changed here (behaviour changes).
 		numbers.stream().filter( x -> x % 2 == 0 ).forEach( System.out::println );
@@ -115,5 +119,15 @@ import java.util.function.Predicate;
 
 	private static void filterAndPrint( List<Integer> numbers, Predicate<Integer> predicate ) {
 		numbers.stream().filter( predicate ).forEach( System.out::println );
+	}
+
+	private void behaviourParametrization() {
+		Function<Integer, Integer> mappingFunction = x -> x * x;
+		map( numbers, mappingFunction ).stream().forEach( System.out::println );
+	}
+
+	private static List<Integer> map( List<Integer> numbers,
+			Function<Integer, Integer> mappingFunction ) {
+		return numbers.stream().map( mappingFunction ).collect( Collectors.toList() );
 	}
 }
