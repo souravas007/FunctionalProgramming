@@ -47,7 +47,7 @@ import java.util.function.Predicate;
 		Consumer<Integer> sysOut = System.out::println;
 	}
 
-	private void Predicate() {
+	private void predicate() {
 		// this is created automatically when you use predicate.
 		// this is to support older versions of java.
 		Predicate<Integer> isEvent = new Predicate<Integer>() {
@@ -58,13 +58,25 @@ import java.util.function.Predicate;
 		};
 	}
 
-	private void Function() {
+	private void function() {
 		// represent a function that accepts one argument & produce a result.
 		// Inside angle bracket,the first type is of input & the next type is of result.
 		Function<Integer, Integer> square = new Function<Integer, Integer>() {
 
 			@Override public Integer apply( Integer x ) {
 				return x * x;
+			}
+		};
+	}
+
+	private void consumer() {
+		// accepts a single argument & returns no result.
+		// consumes input.
+
+		Consumer<Integer> sysOut = new Consumer<>() {
+
+			@Override public void accept( Integer x ) {
+				System.out.println( x );
 			}
 		};
 	}
