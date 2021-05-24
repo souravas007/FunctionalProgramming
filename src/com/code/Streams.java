@@ -12,17 +12,17 @@ public class Streams {
 	public static void main( String[] args ) {
 		Streams stream = new Streams();
 		stream.createEmployee();
-				stream.addListOfNumbers();
-				stream.addListOfNumbersCases();
-				stream.squareAndSum();
-				stream.sumOfOddNumbers();
-				stream.printDistinctNumbers();
-				stream.sortNumbers();
-				stream.sortStrings();
-				stream.sortObjects();
-				stream.squareNumbersList();
-				stream.evenNumberFiltered();
-				stream.listWithLengthOfCourseTitles();
+		//				stream.addListOfNumbers();
+		//				stream.addListOfNumbersCases();
+		//				stream.squareAndSum();
+		//				stream.sumOfOddNumbers();
+		//				stream.printDistinctNumbers();
+		//				stream.sortNumbers();
+		//				stream.sortStrings();
+		//				stream.sortObjects();
+		//				stream.squareNumbersList();
+		//				stream.evenNumberFiltered();
+		//				stream.listWithLengthOfCourseTitles();
 	}
 
 	List<Integer> numbers = List.of( 12, 9, 13, 4, 15 );
