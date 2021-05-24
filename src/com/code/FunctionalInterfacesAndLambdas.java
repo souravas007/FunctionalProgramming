@@ -3,6 +3,7 @@ package com.code;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.function.BiFunction;
 import java.util.function.BiPredicate;
 import java.util.function.BinaryOperator;
 import java.util.function.Consumer;
@@ -23,7 +24,8 @@ public class FunctionalInterfacesAndLambdas {
 		//		functionalInterfacesAndLambdas.behaviourParametrization();
 		//		functionalInterfacesAndLambdas.supplier();
 		//		functionalInterfacesAndLambdas.unaryOperator();
-		functionalInterfacesAndLambdas.biPredicate();
+//		functionalInterfacesAndLambdas.biPredicate();
+		functionalInterfacesAndLambdas.biFunction();
 
 	}
 
@@ -69,6 +71,7 @@ public class FunctionalInterfacesAndLambdas {
 	supplier -> no input & returns something back.
 	unary operator -> 1 input and 1 output of same type.
 	bi-predicate -> 2 input & 1 boolean output.
+	bi-function -> 2 input & 1 output which can be of any type.
 	*/
 	@SuppressWarnings( "all" )
 	private void predicate() {
@@ -181,5 +184,14 @@ public class FunctionalInterfacesAndLambdas {
 		System.out.println( biPredicateTrue.test( 12, "hello" ) );
 		System.out.println( biPredicate.test( 5, "Sourav" ) );
 		System.out.println( biPredicate.test( 11, "Sourav" ) );
+	}
+
+	private void biFunction() {
+		// 2 input & 1 output which can be of any type.
+		BiFunction<Integer, String, String> biFunction = ( number, str ) -> {
+			return number + " " + str;
+		};
+		System.out.println( biFunction.apply( 12, "Sourav" ) );
+
 	}
 }
