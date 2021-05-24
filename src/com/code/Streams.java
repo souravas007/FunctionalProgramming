@@ -1,5 +1,6 @@
 package com.code;
 
+import java.util.Comparator;
 import java.util.List;
 
 @SuppressWarnings( "Convert2MethodRef" ) public class Streams {
@@ -11,11 +12,43 @@ import java.util.List;
 		//		stream.squareAndSum();
 		//		stream.sumOfOddNumbers();
 		//		stream.printDistinctNumbers();
-		stream.sortNumbers();
+		//		stream.sortNumbers();
+		stream.sortStrings();
+
 	}
 
 	List<Integer> numbers = List.of( 12, 9, 13, 4, 15 );
 	List<String> courses = List.of( "Spring Boot", "Java", "Python", "Spring" );
+
+	class Employee {
+
+		String firstName;
+		String lastName;
+
+		public Employee( String firstName, String lastName ) {
+			this.firstName = firstName;
+			this.lastName = lastName;
+		}
+
+		@Override public String toString() {
+			return "Employee{" +
+					"firstName='" + firstName + '\'' +
+					", lastName='" + lastName + '\'' +
+					'}';
+		}
+
+		public String getFirstName() {
+			return firstName;
+		}
+
+		public String getLastName() {
+			return lastName;
+		}
+	}
+
+	List<Employee> employees =
+			List.of( new Employee( "Sourav", "A S" ), new Employee( "Sourav", "S" ),
+					new Employee( "Akash", "Nath" ), new Employee( "Akash", "Anu" ) );
 
 	private void addListOfNumbers() {
 		int sum1 = numbers.stream().reduce( 0, ( a, b ) -> a + b );
@@ -57,4 +90,8 @@ import java.util.List;
 		numbers.stream().sorted().forEach( System.out::println );
 	}
 
+	private void sortStrings() {
+		courses.stream().sorted( Comparator.naturalOrder() ).forEach( System.out::println );
+		courses.stream().sorted( Comparator.reverseOrder() ).forEach( System.out::println );
+	}
 }
