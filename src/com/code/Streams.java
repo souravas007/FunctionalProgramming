@@ -148,4 +148,9 @@ public class Streams {
 		// returns stream.
 		// example: sorted(), distinct(), map(), filter().
 	}
+
+	private void terminalOperations() {
+		//operations that return something other than stream.
+		// example: forEach (return void), collect (return list), reduce (return one element).
+	}
 }
