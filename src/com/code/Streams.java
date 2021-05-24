@@ -12,47 +12,21 @@ public class Streams {
 	public static void main( String[] args ) {
 		Streams stream = new Streams();
 		stream.createEmployee();
-		//		stream.addListOfNumbers();
-		//		stream.addListOfNumbersCases();
-		//		stream.squareAndSum();
-		//		stream.sumOfOddNumbers();
-		//		stream.printDistinctNumbers();
-		//		stream.sortNumbers();
-		//		stream.sortStrings();
-		//		stream.sortObjects();
-		//		stream.squareNumbersList();
-		//		stream.evenNumberFiltered();
-		//		stream.listWithLengthOfCourseTitles();
+				stream.addListOfNumbers();
+				stream.addListOfNumbersCases();
+				stream.squareAndSum();
+				stream.sumOfOddNumbers();
+				stream.printDistinctNumbers();
+				stream.sortNumbers();
+				stream.sortStrings();
+				stream.sortObjects();
+				stream.squareNumbersList();
+				stream.evenNumberFiltered();
+				stream.listWithLengthOfCourseTitles();
 	}
 
 	List<Integer> numbers = List.of( 12, 9, 13, 4, 15 );
 	List<String> courses = List.of( "Spring Boot", "Java", "Python", "Spring" );
-
-	class Employee {
-
-		String firstName;
-		String lastName;
-
-		public Employee( String firstName, String lastName ) {
-			this.firstName = firstName;
-			this.lastName = lastName;
-		}
-
-		@Override public String toString() {
-			return "Employee{" +
-					"firstName='" + firstName + '\'' +
-					", lastName='" + lastName + '\'' +
-					'}';
-		}
-
-		public String getFirstName() {
-			return firstName;
-		}
-
-		public String getLastName() {
-			return lastName;
-		}
-	}
 
 	List<Employee> employees = new ArrayList<>();
 
