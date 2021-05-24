@@ -47,6 +47,7 @@ import java.util.function.Predicate;
 		Consumer<Integer> sysOut = System.out::println;
 	}
 
+	@SuppressWarnings( "all" )
 	private void predicate() {
 		// this is created automatically when you use predicate.
 		// this is to support older versions of java.
@@ -58,6 +59,7 @@ import java.util.function.Predicate;
 		};
 	}
 
+	@SuppressWarnings( "all" )
 	private void function() {
 		// represent a function that accepts one argument & produce a result.
 		// Inside angle bracket,the first type is of input & the next type is of result.
@@ -69,11 +71,12 @@ import java.util.function.Predicate;
 		};
 	}
 
+	@SuppressWarnings( "all" )
 	private void consumer() {
 		// accepts a single argument & returns no result.
 		// consumes input.
 
-		Consumer<Integer> sysOut = new Consumer<>() {
+		Consumer<Integer> sysOut = new Consumer<Integer>() {
 
 			@Override public void accept( Integer x ) {
 				System.out.println( x );
