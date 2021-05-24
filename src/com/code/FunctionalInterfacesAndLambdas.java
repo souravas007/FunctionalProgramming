@@ -12,7 +12,8 @@ import java.util.function.Predicate;
 	public static void main( String[] args ) {
 		FunctionalInterfacesAndLambdas functionalInterfacesAndLambdas =
 				new FunctionalInterfacesAndLambdas();
-		functionalInterfacesAndLambdas.functionalInterfacesBasics();
+		//		functionalInterfacesAndLambdas.functionalInterfacesBasics();
+		functionalInterfacesAndLambdas.behaviourParametrization();
 
 	}
 
@@ -96,5 +97,23 @@ import java.util.function.Predicate;
 				return a + b;
 			}
 		};
+	}
+
+	private void behaviourParametrization() {
+
+		// duplicate code exists. only filter is changed here (behaviour changes).
+		numbers.stream().filter( x -> x % 2 == 0 ).forEach( System.out::println );
+		numbers.stream().filter( x -> x % 2 != 0 ).forEach( System.out::println );
+		// solution: extract predicate and use it (behaviour parametrization).
+
+		Predicate<Integer> even = x -> x % 2 == 0;
+		Predicate<Integer> odd = x -> x % 2 != 0;
+		filterAndPrint( numbers, even );
+		filterAndPrint( numbers, odd );
+
+	}
+
+	private static void filterAndPrint( List<Integer> numbers, Predicate<Integer> predicate ) {
+		numbers.stream().filter( predicate ).forEach( System.out::println );
 	}
 }
