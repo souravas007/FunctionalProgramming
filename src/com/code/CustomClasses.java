@@ -2,6 +2,7 @@ package com.code;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 @SuppressWarnings( "SimplifyStreamApiCallChains" ) public class CustomClasses {
@@ -14,7 +15,11 @@ import java.util.stream.Collectors;
 		//		customClass.skip();
 		//		customClass.skipLimit();
 		//		customClass.takeWhile();
-		customClass.dropWhile();
+		//		customClass.dropWhile();
+		//		customClass.max();
+		//		customClass.min();
+		//		customClass.findFirst();
+		customClass.findAny();
 
 	}
 
@@ -93,4 +98,37 @@ import java.util.stream.Collectors;
 				.forEach( System.out::println );
 	}
 
+	private void max() {
+		// returns optional values -> allows us to specify default values.
+		// returns 1st element.
+		Comparator<Course> comparator = Comparator.comparing( Course::getNoOfStudents );
+		System.out.println( courses.stream().max( comparator ) );
+
+		// with default value.
+		System.out.println( courses.stream().max( comparator )
+				.orElse( new Course( "Kubernetes", "Cloud", 92, 1000 ) ) );
+	}
+
+	private void min() {
+		// returns optional values -> allows us to specify default values.
+		// returns 1st element.
+		Comparator<Course> comparator = Comparator.comparing( Course::getNoOfStudents );
+		System.out.println( courses.stream().min( comparator ) );
+
+		// with default value
+		System.out.println( courses.stream().min( comparator )
+				.orElse( new Course( "Kubernetes", "Cloud", 92, 1000 ) ) );
+	}
+
+	private void findFirst() {
+		// returns first optional value that matches the criteria.
+		Predicate<Course> predicate = course -> course.getReviewScore() > 95;
+		System.out.println( courses.stream().filter( predicate ).findFirst() );
+	}
+
+	private void findAny() {
+		// returns any result which matches the criteria.
+		Predicate<Course> predicate = course -> course.getReviewScore() > 10;
+		System.out.println( courses.stream().filter( predicate ).findAny() );
+	}
 }
