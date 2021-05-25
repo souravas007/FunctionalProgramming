@@ -1,8 +1,10 @@
 package com.code;
 
+import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.LongStream;
 import java.util.stream.Stream;
 
 @SuppressWarnings( "SimplifyStreamApiCallChains" ) public class FunctionalProgramming {
@@ -10,7 +12,8 @@ import java.util.stream.Stream;
 	public static void main( String[] args ) {
 		FunctionalProgramming functionalProgramming = new FunctionalProgramming();
 		//		functionalProgramming.streamFromArray();
-		functionalProgramming.streamCreate();
+		//		functionalProgramming.streamCreate();
+		functionalProgramming.BigNumber();
 	}
 
 	private void streamFromArray() {
@@ -33,5 +36,13 @@ import java.util.stream.Stream;
 		// boxed -> convert primitive into wrapper class for using with List.
 		IntStream.iterate( 2, e -> e * 2 ).limit( 10 ).boxed().collect( Collectors.toList() )
 				.stream().forEach( System.out::println );
+	}
+
+	private void BigNumber() {
+		// overflow happens when the numbers are large.
+		System.out.println( LongStream.range( 1, 50 ).reduce( 1L, ( x, y ) -> x * y ) );
+		// solution: use BigInteger.
+		System.out.println( LongStream.range( 1, 50 ).mapToObj( BigInteger::valueOf )
+				.reduce( BigInteger.ONE, BigInteger::multiply ) );
 	}
 }
