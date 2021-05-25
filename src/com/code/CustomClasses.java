@@ -9,7 +9,12 @@ import java.util.stream.Collectors;
 	public static void main( String[] args ) {
 		CustomClasses customClass = new CustomClasses();
 		//		customClass.match();
-		customClass.sort();
+		//		customClass.sort();
+		//		customClass.limit();
+		//		customClass.skip();
+		//		customClass.skipLimit();
+		//		customClass.takeWhile();
+		customClass.dropWhile();
 
 	}
 
@@ -35,6 +40,7 @@ import java.util.stream.Collectors;
 	}
 
 	private void sort() {
+		// give Course in angular brackets.
 		Comparator<Course> comparatorNoOfStudents =
 				Comparator.comparing( Course::getNoOfStudents );
 		courses.stream().sorted( comparatorNoOfStudents ).collect( Collectors.toList() )
@@ -52,4 +58,39 @@ import java.util.stream.Collectors;
 				.collect( Collectors.toList() ).stream()
 				.forEach( System.out::println );
 	}
+
+	private void limit() {
+		// limit -> only top n results are shown.
+		Comparator<Course> comparator = Comparator.comparing( Course::getNoOfStudents );
+		courses.stream().sorted( comparator ).limit( 3 ).collect( Collectors.toList() )
+				.stream().forEach( System.out::println );
+	}
+
+	private void skip() {
+		// skip -> top n results are skipped
+		Comparator<Course> comparator = Comparator.comparing( Course::getNoOfStudents );
+		courses.stream().sorted( comparator ).skip( 2 ).forEach( System.out::println );
+	}
+
+	private void skipLimit() {
+		Comparator<Course> comparator = Comparator.comparing( Course::getReviewScore )
+				.thenComparing( Course::getNoOfStudents ).reversed();
+		courses.stream().sorted( comparator ).skip( 1 ).limit( 2 )
+				.forEach( System.out::println );
+	}
+
+	private void takeWhile() {
+		// take the elements as long as the condition is true.
+		// if condition becomes false, skips the remaining elements.
+		courses.stream().takeWhile( course -> course.getReviewScore() > 95 )
+				.forEach( System.out::println );
+	}
+
+	private void dropWhile() {
+		// drop the elements as long as the condition is true.
+		// once the condition is met, it will take all the remaining elements.
+		courses.stream().dropWhile( course -> course.getReviewScore() > 95 )
+				.forEach( System.out::println );
+	}
+
 }
