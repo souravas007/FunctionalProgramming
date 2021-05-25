@@ -2,6 +2,8 @@ package com.code;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -20,9 +22,10 @@ import java.util.stream.Collectors;
 		//		customClass.min();
 		//		customClass.findFirst();
 		//		customClass.findAny();
-		customClass.sum();
-		customClass.average();
-		customClass.count();
+		//		customClass.sum();
+		//		customClass.average();
+		//		customClass.count();
+		customClass.group();
 
 	}
 
@@ -158,5 +161,40 @@ import java.util.stream.Collectors;
 		Predicate<Course> predicate = course -> course.getReviewScore() > 80;
 		System.out.println(
 				courses.stream().filter( predicate ).map( Course::getNoOfStudents ).count() );
+	}
+
+	private void group() {
+		// create a map of category and courses in each category.
+		Map<String, List<Course>> categoryMap =
+				courses.stream().collect( Collectors.groupingBy( Course::getCategory ) );
+
+		categoryMap.forEach( ( key, value ) -> {
+			System.out.println( key + ": " );
+			value.stream().forEach( System.out::println );
+
+		} );
+
+		// create a map of category and count.
+		Map<String, Long> categoryCountMap = courses.stream().collect(
+				Collectors.groupingBy( Course::getCategory, Collectors.counting() ) );
+		categoryCountMap.forEach( ( key, value ) -> System.out.println( key + ":" + value ) );
+
+		// create a map of category with max score for that particular category.
+		Map<String, Optional<Course>> categoryMaxScore = courses.stream().collect( Collectors
+				.groupingBy( Course::getCategory,
+						Collectors.maxBy( Comparator.comparing( Course::getReviewScore ) ) ) );
+		categoryMaxScore.forEach( ( key, value ) -> {
+			System.out.println( key + ":" );
+			value.stream().forEach( System.out::println );
+		} );
+
+		// create a map of category and list of names.
+		Map<String, List<String>> categoryWithNames = courses.stream().collect( Collectors
+				.groupingBy( Course::getCategory,
+						Collectors.mapping( Course::getName, Collectors.toList() ) ) );
+		categoryWithNames.forEach( ( key, value ) -> {
+			System.out.println( key + ":" );
+			value.stream().forEach( System.out::println );
+		} );
 	}
 }
