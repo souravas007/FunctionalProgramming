@@ -1,4 +1,4 @@
-package com.code;
+package com.code.data;
 
 public class Employee {
 
