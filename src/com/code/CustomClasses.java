@@ -19,7 +19,10 @@ import java.util.stream.Collectors;
 		//		customClass.max();
 		//		customClass.min();
 		//		customClass.findFirst();
-		customClass.findAny();
+		//		customClass.findAny();
+		customClass.sum();
+		customClass.average();
+		customClass.count();
 
 	}
 
@@ -130,5 +133,30 @@ import java.util.stream.Collectors;
 		// returns any result which matches the criteria.
 		Predicate<Course> predicate = course -> course.getReviewScore() > 10;
 		System.out.println( courses.stream().filter( predicate ).findAny() );
+	}
+
+	private void sum() {
+		// sum works with numbers -> instead of map, use mapToInt.
+		// mapToInt is more efficient.
+		Predicate<Course> predicate = course -> course.getReviewScore() > 80;
+		System.out.println(
+				courses.stream().filter( predicate ).mapToInt( Course::getNoOfStudents )
+						.sum() );
+	}
+
+	private void average() {
+		// average works with numbers -> instead of map, use mapToInt.
+		// mapToInt is more efficient.
+		Predicate<Course> predicate = course -> course.getReviewScore() > 80;
+		System.out.println(
+				courses.stream().filter( predicate ).mapToInt( Course::getNoOfStudents )
+						.average() );
+	}
+
+	private void count() {
+		// count works with anything.
+		Predicate<Course> predicate = course -> course.getReviewScore() > 80;
+		System.out.println(
+				courses.stream().filter( predicate ).map( Course::getNoOfStudents ).count() );
 	}
 }
