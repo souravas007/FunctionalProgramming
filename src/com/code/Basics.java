@@ -2,7 +2,7 @@ package com.code;
 
 import java.util.List;
 
-public class Basics {
+public class Basics{
 
 	public static void main( String[] args ) {
 		Basics basics = new Basics();

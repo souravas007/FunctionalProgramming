@@ -7,13 +7,14 @@ import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 import java.util.stream.Stream;
 
-@SuppressWarnings( "SimplifyStreamApiCallChains" ) public class FunctionalProgramming {
+@SuppressWarnings( "SimplifyStreamApiCallChains" ) public class FunctionalProgrammingForNumbers {
 
 	public static void main( String[] args ) {
-		FunctionalProgramming functionalProgramming = new FunctionalProgramming();
+		FunctionalProgrammingForNumbers
+				functionalProgramming = new FunctionalProgrammingForNumbers();
 		//		functionalProgramming.streamFromArray();
 		//		functionalProgramming.streamCreate();
-		functionalProgramming.BigNumber();
+		//		functionalProgramming.BigNumber();
 	}
 
 	private void streamFromArray() {
